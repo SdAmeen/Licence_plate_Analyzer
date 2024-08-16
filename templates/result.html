@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        .recognized-text {
+            margin-top: 20px;
+        }
+        .recognized-text p {
+            font-size: 18px;
+            background: #e7e7e7;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>License Plate Recognition Result</h1>
+        <img src="{{ url_for('static', filename='predict/test_result.jpg') }}" alt="Processed Image">
+        <div class="recognized-text">
+            <h2>Recognized Text:</h2>
+            {% if text_list %}
+                {% for text in text_list %}
+                    <p>{{ text }}</p>
+                {% endfor %}
+            {% else %}
+                <p>No text recognized.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

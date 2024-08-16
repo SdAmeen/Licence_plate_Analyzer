@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Upload an Image for Number Plate Detection</h2>
+    <form action="/" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center">
+        <div class="input-group" style="max-width: 600px;">
+            <input type="file" class="form-control" name="file" required>
+            <button type="submit" class="btn btn-primary ms-2">Upload</button>
+        </div>
+    </form>
+</div>
+
+{% if upload %}
+<div class="container my-5">
+    <h3 class="text-center mb-4">Detection Results</h3>
+    <div class="row mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <div class="card">
+                <img src="/static/upload/{{ upload_image }}" class="card-img-top img-fluid rounded" alt="Uploaded Image">
+                <div class="card-body">
+                    <h5 class="card-title">Uploaded Image</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <img src="/static/predict/{{ upload_image }}" class="card-img-top img-fluid rounded" alt="Detected Image">
+                <div class="card-body">
+                    <h5 class="card-title">Detected Image</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Number of Licence Plates Detected: {{ no }}</h5>
+            <ul class="list-group">
+                {% for lic in text %}
+                <li class="list-group-item list-group-item-success">
+                    {{ lic }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
